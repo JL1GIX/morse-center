@@ -18,12 +18,12 @@
         :root {
             --primary: #00d06a;
             --primary-dim: #00b85a;
-            --bg: #080f0b;
-            --panel: #0e1f16;
-            --border: #1e5c38;
+            --bg: #f5fbf7;
+            --panel: #ffffff;
+            --border: #b3d9c0;
             --error: #e74c3c;
             --success: #00ee77;
-            --scope-bg: #050f08;
+            --scope-bg: #0a1a10;
         }
         * { box-sizing: border-box; }
         body {
@@ -39,8 +39,8 @@
             overflow-x: hidden;
             touch-action: manipulation;
             background-image:
-                radial-gradient(ellipse at 50% 0%, rgba(0,80,40,0.12) 0%, transparent 60%),
-                radial-gradient(ellipse at 50% 100%, rgba(0,40,20,0.3) 0%, transparent 60%);
+                radial-gradient(ellipse at 50% 0%, rgba(0,160,80,0.05) 0%, transparent 60%),
+                radial-gradient(ellipse at 50% 100%, rgba(0,120,60,0.03) 0%, transparent 60%);
         }
         body::after {
             content: '';
@@ -48,7 +48,7 @@
             top: 0; left: 0; right: 0; bottom: 0;
             background: repeating-linear-gradient(
                 0deg, transparent, transparent 2px,
-                rgba(0,0,0,0.07) 2px, rgba(0,0,0,0.07) 4px
+                rgba(0,160,80,0.03) 2px, rgba(0,160,80,0.03) 4px
             );
             pointer-events: none;
             z-index: 9999;
@@ -59,7 +59,7 @@
             border-top: 2px solid var(--primary);
             padding: 20px;
             border-radius: 4px;
-            box-shadow: 0 0 50px rgba(0,100,55,0.35), 0 0 100px rgba(0,80,40,0.12), inset 0 1px 0 rgba(0,123,67,0.18);
+            box-shadow: 0 2px 20px rgba(0,100,55,0.10), 0 1px 4px rgba(0,80,40,0.06), inset 0 1px 0 rgba(0,123,67,0.08);
             width: 95%;
             max-width: 640px;
             text-align: center;
@@ -106,7 +106,7 @@
             letter-spacing: 6px;
             font-size: 1.6rem;
             color: var(--primary);
-            text-shadow: 0 0 15px rgba(0,123,67,1.0), 0 0 40px rgba(0,123,67,0.5), 0 0 80px rgba(0,123,67,0.2);
+            text-shadow: none;
         }
         .subtitle {
             font-size: 0.65rem;
@@ -120,17 +120,17 @@
             justify-content: space-around;
             margin-bottom: 12px;
             border: 1px solid var(--border);
-            background: rgba(0,0,0,0.5);
+            background: rgba(0,180,90,0.05);
             padding: 8px 15px;
             border-radius: 2px;
         }
         .stat-item { display: flex; flex-direction: column; align-items: center; gap: 2px; }
         .stat-label { color: var(--primary-dim); font-size: 0.68rem; letter-spacing: 2px; opacity: 1.0; }
-        .stat-value { color: var(--primary); font-size: 1.05rem; font-weight: bold; text-shadow: 0 0 10px rgba(0,123,67,0.9), 0 0 20px rgba(0,123,67,0.4); }
+        .stat-value { color: var(--primary); font-size: 1.05rem; font-weight: bold; }
         #scope-container {
             position: relative;
             background: var(--scope-bg);
-            border: 1px solid #2a6040;
+            border: 1px solid #a0cfb5;
             border-radius: 2px;
             margin-bottom: 12px;
             overflow: hidden;
@@ -159,7 +159,7 @@
             content: '';
             position: absolute;
             top: 0; left: 0; right: 0; bottom: 0;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.5) 0%, transparent 25%, transparent 75%, rgba(0,0,0,0.5) 100%), linear-gradient(to right, rgba(0,0,0,0.3) 0%, transparent 15%, transparent 85%, rgba(0,0,0,0.3) 100%);
+            background: none;
             pointer-events: none;
             z-index: 1;
         }
@@ -172,8 +172,8 @@
             gap: 8px;
             margin-bottom: 10px;
             padding: 8px 12px;
-            background: rgba(0,0,0,0.4);
-            border: 1px solid rgba(0,123,67,0.25);
+            background: rgba(0,180,90,0.04);
+            border: 1px solid rgba(0,180,90,0.20);
             border-radius: 2px;
         }
         .msym-dot {
@@ -205,12 +205,12 @@
             border: 1px solid var(--primary-dim);
             border-top: 2px solid var(--primary);
             padding: 14px 12px;
-            background: rgba(0, 15, 8, 0.95);
+            background: rgba(248,255,252,1.0);
             display: flex;
             align-items: center;
             justify-content: center;
             text-transform: uppercase;
-            text-shadow: 0 0 12px rgba(0,123,67,0.9), 0 0 25px rgba(0,123,67,0.4);
+            text-shadow: none;
             border-radius: 2px;
             position: relative;
         }
@@ -240,7 +240,7 @@
             0%, 100% { border-top-color: var(--primary); border-color: var(--primary-dim); }
             50% { border-color: var(--success); border-top-color: var(--success); box-shadow: 0 0 30px var(--success), inset 0 0 20px rgba(0,255,133,0.08); }
         }
-        .cursor { display: inline-block; width: 2px; height: 32px; background: var(--primary); animation: blink 1s infinite; margin-left: 5px; box-shadow: 0 0 12px var(--primary), 0 0 25px rgba(0,123,67,0.5); }
+        .cursor { display: inline-block; width: 2px; height: 32px; background: var(--primary); animation: blink 1s infinite; margin-left: 5px; box-shadow: 0 0 6px rgba(0,180,90,0.4); }
         @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
         #mobile-input {
             background: transparent;
@@ -251,7 +251,7 @@
             font-size: 2rem;
             letter-spacing: 5px;
             text-transform: uppercase;
-            text-shadow: 0 0 12px rgba(0,123,67,0.9), 0 0 25px rgba(0,123,67,0.4);
+            text-shadow: none;
             width: 100%;
             text-align: center;
             caret-color: var(--primary);
@@ -276,13 +276,13 @@
         button:hover {
             background: rgba(0,123,67,0.2);
             border-color: var(--primary);
-            box-shadow: 0 0 15px rgba(0,123,67,0.35);
-            color: #fff;
+            box-shadow: 0 1px 8px rgba(0,123,67,0.15);
+            color: var(--primary);
         }
         .quit-btn { font-size: 0.72rem; padding: 5px 15px; margin-top: 15px; opacity: 0.85; }
         .quit-btn:hover { opacity: 1; }
         select {
-            background: rgba(0,0,0,0.85);
+            background: rgba(240,252,244,0.97);
             color: var(--primary);
             border: 1px solid var(--primary);
             font-size: 0.9rem;
@@ -305,7 +305,7 @@
             margin: 18px 0;
         }
         .setting-item {
-            background: rgba(0,0,0,0.45);
+            background: rgba(0,180,90,0.04);
             border: 1px solid var(--border);
             padding: 12px;
             border-radius: 2px;
@@ -330,7 +330,7 @@
             appearance: none;
             width: 18px; height: 18px;
             border: 1px solid var(--primary-dim);
-            background: rgba(0,0,0,0.6);
+            background: rgba(0,180,90,0.05);
             cursor: pointer;
             position: relative;
             flex-shrink: 0;
@@ -523,7 +523,7 @@
             <div id="score-reg-form" style="display:flex; gap:8px; justify-content:center; flex-wrap:wrap; align-items:center;">
                 <input type="text" id="nickname-input" placeholder="ニックネーム（任意・10文字まで）" maxlength="10"
                     autocomplete="off" autocapitalize="off" spellcheck="false"
-                    style="background:rgba(0,0,0,0.5); border:1px solid var(--border); border-radius:2px;
+                    style="background:rgba(0,180,90,0.04); border:1px solid var(--border); border-radius:2px;
                            color:var(--primary); font-family:inherit; font-size:0.82rem;
                            padding:8px 12px; width:230px; letter-spacing:1px; outline:none;">
                 <button onclick="setNickname()" id="submit-score-btn" style="font-size:0.82rem; padding:8px 18px;">✏️ 名前を設定</button>
@@ -533,7 +533,7 @@
     </div>
 </div>
 
-<footer style="margin-top:20px;padding:12px 0 4px;border-top:1px solid #1e5c38;font-size:0.65rem;letter-spacing:1px;opacity:0.55;text-align:center;">
+<footer style="margin-top:20px;padding:12px 0 4px;border-top:1px solid #b3d9c0;font-size:0.65rem;letter-spacing:1px;opacity:0.55;text-align:center;">
     <div style="display:flex; justify-content:center; flex-wrap:wrap; gap:10px 20px;">
         <a href="https://jl1gix.com" style="color:#007b43; text-decoration:none;">トップ</a>
         <a href="ranking.html" style="color:#007b43; text-decoration:none;">ランキング</a>
