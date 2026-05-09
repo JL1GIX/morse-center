@@ -14,9 +14,9 @@
         :root {
             --primary: #00d06a;
             --primary-dim: #00b85a;
-            --bg: #f5fbf7;
-            --panel: #ffffff;
-            --border: #b3d9c0;
+            --bg: #080f0b;
+            --panel: #0e1f16;
+            --border: #1e5c38;
             --success: #00ee77;
         }
         * { box-sizing: border-box; }
@@ -31,8 +31,8 @@
             margin: 0;
             padding: 20px 10px 40px;
             background-image:
-                radial-gradient(ellipse at 50% 0%, rgba(0,160,80,0.05) 0%, transparent 60%),
-                radial-gradient(ellipse at 50% 100%, rgba(0,120,60,0.03) 0%, transparent 60%);
+                radial-gradient(ellipse at 50% 0%, rgba(0,80,40,0.12) 0%, transparent 60%),
+                radial-gradient(ellipse at 50% 100%, rgba(0,40,20,0.3) 0%, transparent 60%);
         }
         body::after {
             content: '';
@@ -40,7 +40,7 @@
             top: 0; left: 0; right: 0; bottom: 0;
             background: repeating-linear-gradient(
                 0deg, transparent, transparent 2px,
-                rgba(0,160,80,0.03) 2px, rgba(0,160,80,0.03) 4px
+                rgba(0,0,0,0.07) 2px, rgba(0,0,0,0.07) 4px
             );
             pointer-events: none;
             z-index: 9999;
@@ -52,9 +52,9 @@
             padding: 24px;
             border-radius: 4px;
             box-shadow:
-                0 2px 20px rgba(0,100,55,0.10),
-                0 1px 4px rgba(0,80,40,0.06),
-                inset 0 1px 0 rgba(0,123,67,0.08);
+                0 0 50px rgba(0,100,55,0.35),
+                0 0 100px rgba(0,80,40,0.12),
+                inset 0 1px 0 rgba(0,123,67,0.18);
             width: 95%;
             max-width: 680px;
             position: relative;
@@ -127,8 +127,8 @@
             margin-bottom: 8px;
         }
         .morse-cell {
-            background: rgba(0,180,90,0.04);
-            border: 1px solid rgba(30,140,80,0.25);
+            background: rgba(0,0,0,0.4);
+            border: 1px solid rgba(30,92,56,0.6);
             border-radius: 3px;
             padding: 10px 12px;
             display: flex;
@@ -215,7 +215,7 @@
         footer {
             margin-top: 20px;
             padding: 12px 0 4px;
-            border-top: 1px solid #b3d9c0;
+            border-top: 1px solid #1e5c38;
             display: flex;
             justify-content: center;
             flex-wrap: wrap;

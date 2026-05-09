@@ -18,9 +18,9 @@
         :root {
             --primary: #00d06a;
             --primary-dim: #00b85a;
-            --bg: #f5fbf7;
-            --panel: #ffffff;
-            --border: #b3d9c0;
+            --bg: #080f0b;
+            --panel: #0e1f16;
+            --border: #1e5c38;
         }
         * { box-sizing: border-box; }
         body {
@@ -36,8 +36,8 @@
             overflow-x: hidden;
             touch-action: manipulation;
             background-image:
-                radial-gradient(ellipse at 50% 0%, rgba(0,160,80,0.05) 0%, transparent 60%),
-                radial-gradient(ellipse at 50% 100%, rgba(0,120,60,0.03) 0%, transparent 60%);
+                radial-gradient(ellipse at 50% 0%, rgba(0,80,40,0.12) 0%, transparent 60%),
+                radial-gradient(ellipse at 50% 100%, rgba(0,40,20,0.3) 0%, transparent 60%);
         }
         body::after {
             content: '';
@@ -45,7 +45,7 @@
             top: 0; left: 0; right: 0; bottom: 0;
             background: repeating-linear-gradient(
                 0deg, transparent, transparent 2px,
-                rgba(0,160,80,0.03) 2px, rgba(0,160,80,0.03) 4px
+                rgba(0,0,0,0.07) 2px, rgba(0,0,0,0.07) 4px
             );
             pointer-events: none;
             z-index: 9999;
@@ -57,9 +57,9 @@
             padding: 20px;
             border-radius: 4px;
             box-shadow:
-                0 2px 20px rgba(0,100,55,0.10),
-                0 1px 4px rgba(0,80,40,0.06),
-                inset 0 1px 0 rgba(0,123,67,0.08);
+                0 0 50px rgba(0,100,55,0.35),
+                0 0 100px rgba(0,80,40,0.12),
+                inset 0 1px 0 rgba(0,123,67,0.18);
             width: 95%;
             max-width: 640px;
             text-align: center;
@@ -106,7 +106,7 @@
             letter-spacing: 6px;
             font-size: 1.6rem;
             color: var(--primary);
-            text-shadow: none;
+            text-shadow: 0 0 15px rgba(0,123,67,1.0), 0 0 40px rgba(0,123,67,0.5), 0 0 80px rgba(0,123,67,0.2);
         }
         .subtitle {
             font-size: 0.65rem;
@@ -133,8 +133,8 @@
         button:hover {
             background: rgba(0,123,67,0.2);
             border-color: var(--primary);
-            box-shadow: 0 1px 8px rgba(0,123,67,0.15);
-            color: var(--primary);
+            box-shadow: 0 0 15px rgba(0,123,67,0.35);
+            color: #fff;
         }
         @media (max-width: 700px) {
             body { justify-content: flex-start; padding: 8px 0; }
@@ -172,7 +172,7 @@
 <footer style="
     margin-top: 20px;
     padding: 12px 0 4px;
-    border-top: 1px solid #b3d9c0;
+    border-top: 1px solid #1e5c38;
     font-size: 0.65rem;
     letter-spacing: 1px;
     opacity: 0.55;

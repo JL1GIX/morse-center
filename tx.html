@@ -18,12 +18,12 @@
         :root {
             --primary: #00d06a;
             --primary-dim: #00b85a;
-            --bg: #f5fbf7;
-            --panel: #ffffff;
-            --border: #b3d9c0;
+            --bg: #080f0b;
+            --panel: #0e1f16;
+            --border: #1e5c38;
             --error: #e74c3c;
             --success: #00ee77;
-            --scope-bg: #0a1a10;
+            --scope-bg: #050f08;
         }
         * { box-sizing: border-box; }
         body {
@@ -39,8 +39,8 @@
             overflow-x: hidden;
             touch-action: manipulation;
             background-image:
-                radial-gradient(ellipse at 50% 0%, rgba(0,160,80,0.05) 0%, transparent 60%),
-                radial-gradient(ellipse at 50% 100%, rgba(0,120,60,0.03) 0%, transparent 60%);
+                radial-gradient(ellipse at 50% 0%, rgba(0,80,40,0.12) 0%, transparent 60%),
+                radial-gradient(ellipse at 50% 100%, rgba(0,40,20,0.3) 0%, transparent 60%);
         }
         body::after {
             content: '';
@@ -48,7 +48,7 @@
             top: 0; left: 0; right: 0; bottom: 0;
             background: repeating-linear-gradient(
                 0deg, transparent, transparent 2px,
-                rgba(0,160,80,0.03) 2px, rgba(0,160,80,0.03) 4px
+                rgba(0,0,0,0.07) 2px, rgba(0,0,0,0.07) 4px
             );
             pointer-events: none;
             z-index: 9999;
@@ -59,7 +59,7 @@
             border-top: 2px solid var(--primary);
             padding: 20px;
             border-radius: 4px;
-            box-shadow: 0 2px 20px rgba(0,100,55,0.10), 0 1px 4px rgba(0,80,40,0.06), inset 0 1px 0 rgba(0,123,67,0.08);
+            box-shadow: 0 0 50px rgba(0,100,55,0.35), 0 0 100px rgba(0,80,40,0.12), inset 0 1px 0 rgba(0,123,67,0.18);
             width: 95%;
             max-width: 640px;
             text-align: center;
@@ -106,7 +106,7 @@
             letter-spacing: 6px;
             font-size: 1.6rem;
             color: var(--primary);
-            text-shadow: none;
+            text-shadow: 0 0 15px rgba(0,123,67,1.0), 0 0 40px rgba(0,123,67,0.5), 0 0 80px rgba(0,123,67,0.2);
         }
         .subtitle {
             font-size: 0.65rem;
@@ -120,17 +120,17 @@
             justify-content: space-around;
             margin-bottom: 12px;
             border: 1px solid var(--border);
-            background: rgba(0,180,90,0.05);
+            background: rgba(0,0,0,0.5);
             padding: 8px 15px;
             border-radius: 2px;
         }
         .stat-item { display: flex; flex-direction: column; align-items: center; gap: 2px; }
         .stat-label { color: var(--primary-dim); font-size: 0.68rem; letter-spacing: 2px; opacity: 1.0; }
-        .stat-value { color: var(--primary); font-size: 1.05rem; font-weight: bold; }
+        .stat-value { color: var(--primary); font-size: 1.05rem; font-weight: bold; text-shadow: 0 0 10px rgba(0,123,67,0.9), 0 0 20px rgba(0,123,67,0.4); }
         #scope-container {
             position: relative;
             background: var(--scope-bg);
-            border: 1px solid #a0cfb5;
+            border: 1px solid #2a6040;
             border-radius: 2px;
             margin-bottom: 12px;
             overflow: hidden;
@@ -159,7 +159,7 @@
             content: '';
             position: absolute;
             top: 0; left: 0; right: 0; bottom: 0;
-            background: none;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.5) 0%, transparent 25%, transparent 75%, rgba(0,0,0,0.5) 100%), linear-gradient(to right, rgba(0,0,0,0.3) 0%, transparent 15%, transparent 85%, rgba(0,0,0,0.3) 100%);
             pointer-events: none;
             z-index: 1;
         }
@@ -172,8 +172,8 @@
             gap: 8px;
             margin-bottom: 10px;
             padding: 8px 12px;
-            background: rgba(0,180,90,0.04);
-            border: 1px solid rgba(0,180,90,0.20);
+            background: rgba(0,0,0,0.4);
+            border: 1px solid rgba(0,123,67,0.25);
             border-radius: 2px;
         }
         #beginner-display.tx-beginner { min-height: 3.8rem; gap: 14px; }
@@ -209,7 +209,7 @@
             0%, 100% { border-top-color: var(--primary); border-color: var(--primary-dim); }
             50% { border-color: var(--success); border-top-color: var(--success); box-shadow: 0 0 30px var(--success), inset 0 0 20px rgba(0,255,133,0.08); }
         }
-        .cursor { display: inline-block; width: 2px; height: 32px; background: var(--primary); animation: blink 1s infinite; margin-left: 5px; box-shadow: 0 0 6px rgba(0,180,90,0.4); }
+        .cursor { display: inline-block; width: 2px; height: 32px; background: var(--primary); animation: blink 1s infinite; margin-left: 5px; box-shadow: 0 0 12px var(--primary), 0 0 25px rgba(0,123,67,0.5); }
         @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
         button {
             background: transparent;
@@ -229,13 +229,13 @@
         button:hover {
             background: rgba(0,123,67,0.2);
             border-color: var(--primary);
-            box-shadow: 0 1px 8px rgba(0,123,67,0.15);
-            color: var(--primary);
+            box-shadow: 0 0 15px rgba(0,123,67,0.35);
+            color: #fff;
         }
         .quit-btn { font-size: 0.72rem; padding: 5px 15px; margin-top: 15px; opacity: 0.85; }
         .quit-btn:hover { opacity: 1; }
         select {
-            background: rgba(240,252,244,0.97);
+            background: rgba(0,0,0,0.85);
             color: var(--primary);
             border: 1px solid var(--primary);
             font-size: 0.9rem;
@@ -258,7 +258,7 @@
             margin: 18px 0;
         }
         .setting-item {
-            background: rgba(0,180,90,0.04);
+            background: rgba(0,0,0,0.45);
             border: 1px solid var(--border);
             padding: 12px;
             border-radius: 2px;
@@ -283,7 +283,7 @@
             appearance: none;
             width: 18px; height: 18px;
             border: 1px solid var(--primary-dim);
-            background: rgba(0,180,90,0.05);
+            background: rgba(0,0,0,0.6);
             cursor: pointer;
             position: relative;
             flex-shrink: 0;
@@ -346,10 +346,10 @@
         }
         .tx-paddle-btn:active, .tx-paddle-btn.pressed {
             background: rgba(0, 123, 67, 0.35);
-            box-shadow: 0 1px 8px rgba(0,123,67,0.15);
+            box-shadow: 0 0 22px rgba(0, 123, 67, 0.55);
             border-color: var(--success);
         }
-        .tx-paddle-sym { display: block; font-size: 1.6rem; line-height: 1; margin-bottom: 4px; text-shadow: none; }
+        .tx-paddle-sym { display: block; font-size: 1.6rem; line-height: 1; margin-bottom: 4px; text-shadow: 0 0 10px rgba(0,123,67,0.8); }
         .tx-paddle-label { display: block; font-size: 0.68rem; letter-spacing: 3px; opacity: 0.9; }
         /* TX word display */
         #tx-word-display {
@@ -359,7 +359,7 @@
             border: 1px solid var(--primary-dim);
             border-top: 2px solid var(--primary);
             padding: 12px;
-            background: rgba(248,255,252,1.0);
+            background: rgba(0, 15, 8, 0.95);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -397,8 +397,8 @@
             letter-spacing: 2px;
         }
         /* Result screen */
-        #result-screen h2 { letter-spacing: 6px; font-size: 1.4rem; text-shadow: none; }
-        #final-result-text { font-size: clamp(1.1rem, 5.5vw, 2rem); color: var(--success); text-shadow: none; white-space: nowrap; }
+        #result-screen h2 { letter-spacing: 6px; font-size: 1.4rem; text-shadow: 0 0 20px rgba(0,123,67,1.0), 0 0 50px rgba(0,123,67,0.4); }
+        #final-result-text { font-size: clamp(1.1rem, 5.5vw, 2rem); color: var(--success); text-shadow: 0 0 20px rgba(0,180,90,0.9), 0 0 50px rgba(0,180,90,0.4); white-space: nowrap; }
         .share-area { margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--border); }
         .share-label { font-size: 0.65rem; letter-spacing: 3px; color: var(--primary-dim); opacity: 1.0; margin-bottom: 12px; }
         .share-buttons { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
@@ -422,14 +422,14 @@
             color: var(--primary-dim); padding-bottom: 8px; border-bottom: 1px solid var(--border);
         }
         #free-header span { color: var(--primary); font-size: 1.0rem; letter-spacing: 8px; }
-        #free-input-block { background: rgba(0,180,90,0.04); border: 1px solid var(--border); border-radius: 2px; padding: 10px 16px 12px; }
+        #free-input-block { background: rgba(0,0,0,0.4); border: 1px solid var(--border); border-radius: 2px; padding: 10px 16px 12px; }
         #free-input-block .free-section-label {
             font-size: 0.58rem; color: var(--primary-dim); letter-spacing: 3px;
             margin-bottom: 8px; display: flex; align-items: center; gap: 6px;
         }
         #free-input-block .free-section-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
         #free-morse-render { min-height: 2.2rem; display: flex; align-items: center; justify-content: center; gap: 5px; flex-wrap: wrap; }
-        #free-output-block { background: rgba(0,180,90,0.04); border: 1px solid var(--primary); border-radius: 2px; padding: 0; overflow: hidden; }
+        #free-output-block { background: rgba(0,0,0,0.55); border: 1px solid var(--primary); border-radius: 2px; padding: 0; overflow: hidden; }
         #free-output-block .free-section-label {
             font-size: 0.58rem; color: var(--primary-dim); letter-spacing: 3px;
             padding: 6px 14px 5px; border-bottom: 1px solid var(--border);
@@ -468,9 +468,9 @@
         }
         #key-customize-btn:hover { border-color: var(--border); color: var(--primary-dim); background: transparent; box-shadow: none; }
         /* Key Customize Modal */
-        #key-customize-modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.65); z-index: 999; align-items: center; justify-content: center; }
+        #key-customize-modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.88); z-index: 999; align-items: center; justify-content: center; }
         #key-customize-modal.open { display: flex; }
-        .kc-box { background: #ffffff; border: 1px solid var(--primary-dim); border-top: 2px solid var(--primary); padding: 26px 28px; width: min(340px, 88vw); }
+        .kc-box { background: #000f08; border: 1px solid var(--primary-dim); border-top: 2px solid var(--primary); padding: 26px 28px; width: min(340px, 88vw); }
         .kc-title { font-size: 0.7rem; letter-spacing: 3px; color: var(--primary-dim); margin-bottom: 18px; text-align: center; }
         .kc-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin: 10px 0; }
         .kc-label { font-size: 0.78rem; letter-spacing: 2px; color: var(--primary-dim); flex-shrink: 0; }
@@ -628,7 +628,7 @@
             <div id="score-reg-form" style="display:flex; gap:8px; justify-content:center; flex-wrap:wrap; align-items:center;">
                 <input type="text" id="nickname-input" placeholder="ニックネーム（任意・10文字まで）" maxlength="10"
                     autocomplete="off" autocapitalize="off" spellcheck="false"
-                    style="background:rgba(0,180,90,0.04); border:1px solid var(--border); border-radius:2px;
+                    style="background:rgba(0,0,0,0.5); border:1px solid var(--border); border-radius:2px;
                            color:var(--primary); font-family:inherit; font-size:0.82rem;
                            padding:8px 12px; width:230px; letter-spacing:1px; outline:none;">
                 <button onclick="setNickname()" id="submit-score-btn" style="font-size:0.82rem; padding:8px 18px;">✏️ 名前を設定</button>
@@ -638,7 +638,7 @@
     </div>
 </div>
 
-<footer style="margin-top:20px;padding:12px 0 4px;border-top:1px solid #b3d9c0;font-size:0.65rem;letter-spacing:1px;opacity:0.55;text-align:center;">
+<footer style="margin-top:20px;padding:12px 0 4px;border-top:1px solid #1e5c38;font-size:0.65rem;letter-spacing:1px;opacity:0.55;text-align:center;">
     <div style="display:flex; justify-content:center; flex-wrap:wrap; gap:10px 20px;">
         <a href="https://jl1gix.com" style="color:#007b43; text-decoration:none;">トップ</a>
         <a href="ranking.html" style="color:#007b43; text-decoration:none;">ランキング</a>
