@@ -397,7 +397,7 @@ async function loadRanking(mode, minutes, page) {
 
             html += `<tr>
                 <td class="rank-num">${rankDisplay}</td>
-                <td class="nickname">${escHtml(row.nickname)}${beginnerBadge}</td>
+                <td class="nickname">${escHtml(formatNickname(row.nickname))}${beginnerBadge}</td>
                 <td class="score-val">${row.score}<span class="score-unit">chars</span></td>
                 <td class="date-val">${date}</td>
             </tr>`;
@@ -416,6 +416,12 @@ function escHtml(str) {
         .replace(/</g, '&lt;')
         .replace(/>/g, '&gt;')
         .replace(/"/g, '&quot;');
+}
+
+function formatNickname(nick) {
+    if (nick === 'noname') return nick;
+    const upper = String(nick).replace(/[^A-Za-z]/g, '').toUpperCase();
+    return upper || 'noname';
 }
 
 function switchMode(mode) {
