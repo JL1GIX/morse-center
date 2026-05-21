@@ -632,7 +632,7 @@
             <div id="score-reg-form" style="display:flex; gap:8px; justify-content:center; flex-wrap:wrap; align-items:center;">
                 <input type="text" id="nickname-input" placeholder="ニックネーム（英大文字・10文字まで）" maxlength="10"
                     autocomplete="off" autocapitalize="characters" spellcheck="false"
-                    oninput="this.value = this.value.replace(/[^A-Za-z]/g, '').toUpperCase()"
+                    oninput="this.value = this.value.replace(/[^A-Za-z0-9]/g, '').toUpperCase()"
                     style="background:rgba(0,0,0,0.5); border:1px solid var(--border); border-radius:2px;
                            color:var(--primary); font-family:inherit; font-size:0.82rem;
                            padding:8px 12px; width:230px; letter-spacing:1px; outline:none;">
@@ -1382,7 +1382,7 @@ async function autoRegister(retryCount = 0) {
 }
 
 async function setNickname() {
-    const nickname = document.getElementById('nickname-input').value.replace(/[^A-Z]/g, '');
+    const nickname = document.getElementById('nickname-input').value.replace(/[^A-Z0-9]/g, '');
     if (!nickname) return;  // 未入力なら何もしない（初期登録のnonameのまま）
     if (!_registeredId) return;
     const btn = document.getElementById('submit-score-btn');

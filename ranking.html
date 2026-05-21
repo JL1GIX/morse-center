@@ -420,7 +420,7 @@ function escHtml(str) {
 
 function formatNickname(nick) {
     if (nick === 'noname') return nick;
-    const upper = String(nick).replace(/[^A-Za-z]/g, '').toUpperCase();
+    const upper = String(nick).replace(/[^A-Za-z0-9]/g, '').toUpperCase();
     return upper || 'noname';
 }
 
