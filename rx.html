@@ -525,8 +525,9 @@
         <div id="score-reg-area" style="margin-top:18px; border-top:1px solid var(--border); padding-top:14px;">
             <div id="score-reg-result" style="margin-bottom:12px; font-size:0.85rem; line-height:2; color:var(--primary);"></div>
             <div id="score-reg-form" style="display:flex; gap:8px; justify-content:center; flex-wrap:wrap; align-items:center;">
-                <input type="text" id="nickname-input" placeholder="ニックネーム（任意・10文字まで）" maxlength="10"
-                    autocomplete="off" autocapitalize="off" spellcheck="false"
+                <input type="text" id="nickname-input" placeholder="ニックネーム（英大文字・10文字まで）" maxlength="10"
+                    autocomplete="off" autocapitalize="characters" spellcheck="false"
+                    oninput="this.value = this.value.replace(/[^A-Za-z]/g, '').toUpperCase()"
                     style="background:rgba(0,0,0,0.5); border:1px solid var(--border); border-radius:2px;
                            color:var(--primary); font-family:inherit; font-size:0.82rem;
                            padding:8px 12px; width:230px; letter-spacing:1px; outline:none;">
@@ -681,26 +682,24 @@ function _sosLoop() {
     const ltGap = dotT * 3;
     const wdGap = dotT * 7;
     const freq  = 750;
-    const letters = ['...', '---', '...'];
+    // SOS はプロサイン：文字間隔なし、要素間隔のみでつなげて送出
+    const sosSymbols = '...---...'.split('');
     let t = _sosCtx.currentTime + 0.05;
     let offset = 0;
-    letters.forEach((code, li) => {
-        code.split('').forEach((sym) => {
-            const dur = sym === '.' ? dotT : dashT;
-            const osc = _sosCtx.createOscillator();
-            const gn  = _sosCtx.createGain();
-            osc.type = 'sine';
-            osc.frequency.value = freq;
-            gn.gain.setValueAtTime(0, t + offset);
-            gn.gain.linearRampToValueAtTime(0.5, t + offset + 0.006);
-            gn.gain.setValueAtTime(0.5, t + offset + dur - 0.006);
-            gn.gain.linearRampToValueAtTime(0, t + offset + dur + 0.006);
-            osc.connect(gn); gn.connect(_sosCtx.destination);
-            osc.start(t + offset);
-            osc.stop(t + offset + dur + 0.05);
-            offset += dur + elGap;
-        });
-        if (li < letters.length - 1) offset += (ltGap - elGap);
+    sosSymbols.forEach((sym) => {
+        const dur = sym === '.' ? dotT : dashT;
+        const osc = _sosCtx.createOscillator();
+        const gn  = _sosCtx.createGain();
+        osc.type = 'sine';
+        osc.frequency.value = freq;
+        gn.gain.setValueAtTime(0, t + offset);
+        gn.gain.linearRampToValueAtTime(0.5, t + offset + 0.006);
+        gn.gain.setValueAtTime(0.5, t + offset + dur - 0.006);
+        gn.gain.linearRampToValueAtTime(0, t + offset + dur + 0.006);
+        osc.connect(gn); gn.connect(_sosCtx.destination);
+        osc.start(t + offset);
+        osc.stop(t + offset + dur + 0.05);
+        offset += dur + elGap;
     });
     offset += (wdGap - elGap);
     _sosTimer = setTimeout(_sosLoop, offset * 1000);
@@ -1131,8 +1130,8 @@ async function autoRegister(retryCount = 0) {
 }
 
 async function setNickname() {
-    const nickname = document.getElementById('nickname-input').value.trim();
-    if (!nickname) return;
+    const nickname = document.getElementById('nickname-input').value.replace(/[^A-Z]/g, '');
+    if (!nickname) return;  // 未入力なら何もしない（初期登録のnonameのまま）
     if (!_registeredId) return;
     const btn = document.getElementById('submit-score-btn');
     btn.disabled = true;
