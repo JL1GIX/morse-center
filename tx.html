@@ -29,6 +29,7 @@
             --success: #00ee77;
             --scope-bg: #050f08;
         }
+        html, body { scrollbar-gutter: stable; }
         * { box-sizing: border-box; }
         body {
             font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
@@ -681,7 +682,7 @@ let txWord = [], txCharIndex = 0, txMorseInput = '';
 let nextTxType = 'CALLSIGN';
 let txCharTimer = null;
 let TX_CHAR_GAP = 280;
-const TX_DOT_TIME = 1.2 / 23; // 23 WPM (dit ≈ 52ms)
+const TX_DOT_TIME = 1.2 / 22; // 22 WPM (dit ≈ 55ms)
 // Iambic keyer state
 let dotHeld = false, dashHeld = false;
 let lastSentSym = null;
