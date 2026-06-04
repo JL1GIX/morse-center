@@ -600,7 +600,8 @@ function generateCallsign() {
     const rAZ = () => String.fromCharCode(65 + Math.floor(Math.random() * 26));
     const r09 = () => Math.floor(Math.random() * 10).toString();
     const rRange = (a, z) => String.fromCharCode(a.charCodeAt(0) + Math.floor(Math.random() * (z.charCodeAt(0) - a.charCodeAt(0) + 1)));
-    const pfx = Math.random() < 0.5 ? 'J' : (Math.random() < 0.5 ? '7' : '8');
+    const r = Math.random();
+    const pfx = r < 0.90 ? 'J' : (r < 0.97 ? '7' : '8');
     let second;
     if (pfx === 'J') second = rRange('A', 'S');
     else if (pfx === '7') second = rRange('J', 'N');
