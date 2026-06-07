@@ -624,7 +624,7 @@
             <div class="share-buttons">
                 <button class="share-btn share-btn-x" onclick="shareX()">
                     <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.402 6.231H2.744l7.73-8.835L2.25 2.25h6.832l4.258 5.632 4.905-5.632zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-                    X でシェア
+                    でシェア
                 </button>
             </div>
         </div>
@@ -1334,7 +1334,7 @@ function endGame() {
 // ── SNS Share ──────────────────────────────────────────────────────────────────
 function getShareText() {
     const minutes = Math.round(initialSeconds / 60);
-    return `【モールス打】送信モード\n${minutes}分間で${score}文字！\n#モールス打 #アマチュア無線 #CW #モールス信号\nhttps://jl1gix.com`;
+    return `【モールス打】送信モード\n${minutes}分間で${score}文字\n#モールス打 #アマチュア無線 #CW #モールス信号\nhttps://jl1gix.com`;
 }
 function shareX() {
     const url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(getShareText())}`;
