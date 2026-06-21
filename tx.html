@@ -514,12 +514,28 @@
                 </div>
             </div>
             <div class="settings-grid" style="margin:18px 0 18px;">
-                <div class="setting-item" style="grid-column:1/-1;">
+                <div class="setting-item">
                     <span class="setting-label">⏱ 制限時間</span>
                     <select id="time-select">
                         <option value="60">1分間</option>
                         <option value="180">3分間</option>
                         <option value="300">5分間</option>
+                    </select>
+                </div>
+                <div class="setting-item">
+                    <span class="setting-label">📡 モールス速度</span>
+                    <select id="wpm-select">
+                        <option value="20">20 WPM</option>
+                        <option value="21">21 WPM</option>
+                        <option value="22">22 WPM</option>
+                        <option value="23">23 WPM</option>
+                        <option value="24" selected>24 WPM</option>
+                        <option value="25">25 WPM</option>
+                        <option value="26">26 WPM</option>
+                        <option value="27">27 WPM</option>
+                        <option value="28">28 WPM</option>
+                        <option value="29">29 WPM</option>
+                        <option value="30">30 WPM</option>
                     </select>
                 </div>
                 <div class="setting-item checkbox-item">
@@ -682,7 +698,7 @@ let txWord = [], txCharIndex = 0, txMorseInput = '';
 let nextTxType = 'CALLSIGN';
 let txCharTimer = null;
 let TX_CHAR_GAP = 280;
-const TX_DOT_TIME = 1.2 / 24; // 24 WPM (dit = 50ms)
+let TX_DOT_TIME = 1.2 / 24; // 24 WPM デフォルト、設定で 20-30 から選択可能
 // Iambic keyer state
 let dotHeld = false, dashHeld = false;
 let lastSentSym = null;
@@ -804,7 +820,9 @@ function generateRST() {
 // ── Audio unlock + prepare ─────────────────────────────────────────────────────
 function unlockAndPrepare() {
     gameMode = 'TX';
-    document.getElementById('wpm-display').innerText = 'KEY';
+    const wpmVal = parseInt(document.getElementById('wpm-select').value);
+    TX_DOT_TIME = 1.2 / wpmVal;
+    document.getElementById('wpm-display').innerText = wpmVal;
     beginnerMode = document.getElementById('beginner-mode-check').checked;
     if (beginnerMode) beginnerDisplay.classList.remove('hidden');
     if (!audioCtx) {
@@ -1057,6 +1075,8 @@ function startFreeMode() {
 function launchFreeMode() {
     masterGain.gain.setValueAtTime(1, audioCtx.currentTime);
     gameMode = 'FREE';
+    const wpmValFree = parseInt(document.getElementById('wpm-select').value);
+    TX_DOT_TIME = 1.2 / wpmValFree;
     isPlaying = true;
     freeTextBuffer = '';
     txMorseInput = ''; txCharTimer = null;
