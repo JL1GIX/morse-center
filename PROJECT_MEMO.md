@@ -1,4 +1,4 @@
-# Morse Center (旧: モールス打 / リポジトリ名: morseda) プロジェクトメモ
+# モールスセンター / Morse Center (旧: モールス打 / リポジトリ名: morseda) プロジェクトメモ
 
 このメモは、Cowork (Claude) が次回作業を始めるときに、状況をすぐ把握できるよう残しておくものです。
 
@@ -6,7 +6,7 @@
 
 ## 1. プロジェクト概要
 
-- **サイト名**: Morse Center (旧: モールス打) — Contest Edition
+- **サイト名**: モールスセンター (英表記: Morse Center、旧: モールス打) — Contest Edition
 - **公開 URL**: https://jl1gix.com
 - **GitHub リポジトリ**: https://github.com/JL1GIX/morseda
 - **運営者**: 熊谷 (コールサイン: JL1GIX)
