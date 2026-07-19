@@ -592,11 +592,11 @@
         </div>
         <!-- TX paddle buttons (touch only) -->
         <div id="tx-paddle-area" class="hidden">
-            <button class="tx-paddle-btn" id="pad-dot" ontouchstart="event.preventDefault();tapSymbol(false);">
+            <button class="tx-paddle-btn" id="pad-dot" ontouchstart="event.preventDefault();paddleDown(false);" ontouchend="event.preventDefault();paddleUp(false);" ontouchcancel="paddleUp(false);">
                 <span class="tx-paddle-sym">・</span>
                 <span class="tx-paddle-label">トン</span>
             </button>
-            <button class="tx-paddle-btn" id="pad-dash" ontouchstart="event.preventDefault();tapSymbol(true);">
+            <button class="tx-paddle-btn" id="pad-dash" ontouchstart="event.preventDefault();paddleDown(true);" ontouchend="event.preventDefault();paddleUp(true);" ontouchcancel="paddleUp(true);">
                 <span class="tx-paddle-sym">ー</span>
                 <span class="tx-paddle-label">ツー</span>
             </button>
@@ -628,11 +628,11 @@
             <button class="free-quit-btn" onclick="quitFreeMode()">■ QUIT</button>
         </div>
         <div id="free-paddle-area">
-            <button class="tx-paddle-btn" ontouchstart="event.preventDefault();tapSymbol(false);">
+            <button class="tx-paddle-btn" ontouchstart="event.preventDefault();paddleDown(false);" ontouchend="event.preventDefault();paddleUp(false);" ontouchcancel="paddleUp(false);">
                 <span class="tx-paddle-sym">・</span>
                 <span class="tx-paddle-label">トン</span>
             </button>
-            <button class="tx-paddle-btn" ontouchstart="event.preventDefault();tapSymbol(true);">
+            <button class="tx-paddle-btn" ontouchstart="event.preventDefault();paddleDown(true);" ontouchend="event.preventDefault();paddleUp(true);" ontouchcancel="paddleUp(true);">
                 <span class="tx-paddle-sym">ー</span>
                 <span class="tx-paddle-label">ツー</span>
             </button>
@@ -980,6 +980,20 @@ function tapSymbol(isDash) {
         gameMode === 'FREE' ? decodeFreeChar : decodeTxChar,
         TX_CHAR_GAP
     );
+}
+
+// タッチパドル(長押し対応): touchstart で押下→キーヤーループ開始、touchend/cancel で解放
+function paddleDown(isDash) {
+    if (!isPlaying || (gameMode !== 'TX' && gameMode !== 'FREE')) return;
+    if (isDash) {
+        if (!dashHeld) { dashHeld = true; startKeyerLoop(); }
+    } else {
+        if (!dotHeld) { dotHeld = true; startKeyerLoop(); }
+    }
+}
+function paddleUp(isDash) {
+    if (isDash) dashHeld = false;
+    else dotHeld = false;
 }
 
 function onTxKeyDown(e) {
